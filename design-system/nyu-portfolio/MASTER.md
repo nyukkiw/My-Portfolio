@@ -194,7 +194,7 @@ SVG inline buatan sendiri (stroke 1.5, `currentColor`). Tanpa emoji, tanpa libra
 
 ## Page Pattern: Satu halaman portofolio
 
-Urutan: **Hero > Proyek > Skill > Kontak**. Tanpa blog.
+Urutan: **Hero > Skill > Sertifikat > Kontak**. Tanpa blog. (Section "Proyek" diganti "Sertifikat"; kartu tetap bergaya sama.)
 
 | Section | Isi | CTA |
 |---|---|---|

@@ -23,7 +23,7 @@ export function Hero() {
             {hero.lead}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="#proyek">{hero.ctaProjects}</Button>
+            <Button href="#sertifikat">{hero.ctaCertificates}</Button>
             <Button href="#kontak" variant="secondary">
               {hero.ctaContact}
             </Button>

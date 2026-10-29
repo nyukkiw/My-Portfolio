@@ -28,10 +28,36 @@ export function ArrowUpRightIcon({ className }: IconProps) {
   );
 }
 
+export function CloseIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </Svg>
+  );
+}
+
+export function ExpandIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" />
+    </Svg>
+  );
+}
+
 export function MailIcon({ className }: IconProps) {
   return (
     <Svg className={className}>
       <path d="M3 5h18v14H3zM3 6l9 7 9-7" />
+    </Svg>
+  );
+}
+
+export function InstagramIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M4 4h16v16H4z" />
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M16.5 7.5h.01" />
     </Svg>
   );
 }

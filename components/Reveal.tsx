@@ -34,7 +34,7 @@ export function Reveal({ children, className }: RevealProps) {
   );
 }
 
-// Daftar dengan stagger: hanya dipakai untuk kartu proyek dan skill.
+// Daftar dengan stagger: hanya dipakai untuk kartu sertifikat dan skill.
 export function RevealGroup({ children, className }: RevealProps) {
   return (
     <motion.ul
