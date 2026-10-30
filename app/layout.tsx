@@ -14,9 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO(domain): saat domain sudah ada, tambahkan `metadataBase: new URL("https://<domain>")`
-// di sini agar URL Open Graph/gambar preview menjadi absolut. Belum ada domain, jadi dikosongkan.
+// Alamat produksi (EdgeOne Pages). Ubah di sini jika domain berganti; dipakai agar
+// URL Open Graph/gambar preview menjadi absolut.
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-website-dppv8dynw8n4.edgeone.dev"),
   title: content.site.title,
   description: content.site.description,
   openGraph: {
