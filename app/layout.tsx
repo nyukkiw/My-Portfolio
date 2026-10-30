@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: content.locale,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: content.site.title,
+    description: content.site.description,
+  },
 };
 
 export const viewport: Viewport = {

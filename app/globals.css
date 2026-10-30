@@ -1,4 +1,9 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+/* Pindai hanya folder yang berisi kelas Tailwind; dokumen dan folder lain diabaikan. */
+@source "../app";
+@source "../components";
+@source "../content";
 
 /* Token dari design-system/nyu-portfolio/MASTER.md. Tema gelap saja, satu aksen (cyan). */
 @theme {
