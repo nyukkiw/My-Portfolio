@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 // Alamat produksi (EdgeOne Pages). Ubah di sini jika domain berganti; dipakai agar
 // URL Open Graph/gambar preview menjadi absolut.
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio-website-dppv8dynw8n4.edgeone.dev"),
+  metadataBase: new URL("https://portfolio-website-trfupfoq.edgeone.dev"),
   title: content.site.title,
   description: content.site.description,
   openGraph: {
@@ -26,11 +26,16 @@ export const metadata: Metadata = {
     siteName: content.site.name,
     type: "website",
     locale: content.locale,
+    // public/og.png: berekstensi .png agar hosting menyajikannya sebagai image/png.
+    images: [
+      { url: "/og.png", width: 1200, height: 630, alt: content.site.title },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: content.site.title,
     description: content.site.description,
+    images: ["/og.png"],
   },
 };
 
