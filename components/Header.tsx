@@ -1,4 +1,5 @@
 import { content } from "@/content";
+import { MobileNav } from "./MobileNav";
 
 export function Header() {
   const { site, nav } = content;
@@ -16,13 +17,15 @@ export function Header() {
             _
           </span>
         </a>
-        <nav aria-label={nav.label}>
+
+        {/* Layar >= 640px: tautan berjajar */}
+        <nav aria-label={nav.label} className="hidden sm:block">
           <ul className="flex items-center gap-1">
             {nav.links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="inline-flex min-h-11 items-center px-2 font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground transition-colors duration-200 hover:text-accent sm:px-3"
+                  className="inline-flex min-h-11 items-center px-3 font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground transition-colors duration-200 hover:text-accent"
                 >
                   {link.label}
                 </a>
@@ -30,6 +33,14 @@ export function Header() {
             ))}
           </ul>
         </nav>
+
+        {/* Layar < 640px: tombol Menu */}
+        <MobileNav
+          label={nav.label}
+          openLabel={nav.menuOpen}
+          closeLabel={nav.menuClose}
+          links={nav.links}
+        />
       </div>
     </header>
   );

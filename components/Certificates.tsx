@@ -6,7 +6,7 @@ export function Certificates() {
   const { certificates } = content;
 
   return (
-    <Section id="sertifikat" index="02" title={certificates.title}>
+    <Section id="sertifikat" index="03" title={certificates.title}>
       <CertificateGallery certificates={certificates} />
     </Section>
   );

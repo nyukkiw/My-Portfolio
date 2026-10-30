@@ -3,7 +3,7 @@
 import { motion, type Variants } from "motion/react";
 
 // Satu pola masuk untuk seluruh situs: fade + naik 12px, sekali saat terlihat.
-const item: Variants = {
+export const revealItem: Variants = {
   hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
 };
@@ -24,7 +24,7 @@ export function Reveal({ children, className }: RevealProps) {
   return (
     <motion.div
       className={className}
-      variants={item}
+      variants={revealItem}
       initial="hidden"
       whileInView="show"
       viewport={viewport}
@@ -51,7 +51,7 @@ export function RevealGroup({ children, className }: RevealProps) {
 
 export function RevealItem({ children, className }: RevealProps) {
   return (
-    <motion.li className={className} variants={item}>
+    <motion.li className={className} variants={revealItem}>
       {children}
     </motion.li>
   );

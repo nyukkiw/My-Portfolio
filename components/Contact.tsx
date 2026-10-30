@@ -13,7 +13,7 @@ export function Contact() {
   const { contact } = content;
 
   return (
-    <Section id="kontak" index="03" title={contact.title}>
+    <Section id="kontak" index="06" title={contact.title}>
       <p className="max-w-[52ch] text-lg text-muted-foreground">
         {contact.lead}
       </p>
