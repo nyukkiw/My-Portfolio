@@ -134,6 +134,34 @@ body {
   box-shadow: 0 0 12px rgb(34 211 238 / 0.35);
 }
 
+/* Equalizer mini pemutar musik: hanya transform (scaleY), bergerak saat lagu diputar */
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  transform-origin: bottom;
+  transform: scaleY(0.3);
+}
+
+.eq-playing .eq-bar {
+  animation: eq 0.9s ease-in-out infinite;
+}
+
+.eq-playing .eq-bar:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.eq-playing .eq-bar:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
 /* Underscore wordmark yang berkedip (opacity saja) */
 @keyframes blink {
   50% {
@@ -151,6 +179,10 @@ body {
   }
 
   .cursor-blink {
+    animation: none;
+  }
+
+  .eq-playing .eq-bar {
     animation: none;
   }
 

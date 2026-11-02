@@ -28,6 +28,22 @@ export function ArrowUpRightIcon({ className }: IconProps) {
   );
 }
 
+export function PlayIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M8 5v14l11-7z" />
+    </Svg>
+  );
+}
+
+export function PauseIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M8 5v14M16 5v14" />
+    </Svg>
+  );
+}
+
 export function MenuIcon({ className }: IconProps) {
   return (
     <Svg className={className}>

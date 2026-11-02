@@ -6,7 +6,7 @@ export function Brief() {
   const { brief } = content;
 
   return (
-    <Section id="mulai" index="04" title={brief.title}>
+    <Section id="mulai" index="05" title={brief.title}>
       <p className="max-w-[52ch] text-lg text-muted-foreground">{brief.lead}</p>
       <div className="mt-10">
         <BriefBuilder brief={brief} />

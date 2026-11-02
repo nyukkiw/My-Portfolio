@@ -11,7 +11,7 @@ type Props = {
   links: { href: string; label: string }[];
 };
 
-// Menu untuk layar < 640px. Panel muncul tepat di bawah header (header bersifat sticky,
+// Menu untuk layar < 768px. Panel muncul tepat di bawah header (header bersifat sticky,
 // jadi menjadi acuan posisi absolute). Tutup dengan Esc, klik di luar, atau memilih tautan.
 export function MobileNav({ label, openLabel, closeLabel, links }: Props) {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,7 @@ export function MobileNav({ label, openLabel, closeLabel, links }: Props) {
   }, [open]);
 
   return (
-    <div className="sm:hidden">
+    <div className="md:hidden">
       <button
         ref={buttonRef}
         type="button"

@@ -7,7 +7,7 @@ export function Skills() {
   const { skills } = content;
 
   return (
-    <Section id="skill" index="02" title={skills.title}>
+    <Section id="skill" index="03" title={skills.title}>
       <RevealGroup className="grid list-none gap-10 md:grid-cols-2 xl:grid-cols-3">
         {skills.groups.map((group) => (
           <RevealItem

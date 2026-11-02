@@ -57,6 +57,14 @@ const emailDomain = "gmail.com";
 const githubUrl = "https://github.com/nyukkiw";
 const instagramUrl = "https://www.instagram.com/appbuilder.nyu/";
 
+// Musik latar (satu lagu). File ada di public/audio/. Set ke `null` untuk menyembunyikan pemutar.
+// Tambahkan `artist` kalau lisensinya mewajibkan atribusi. Pastikan hak pakai di situs publik.
+type MusicTrack = { src: string; title: string; artist?: string };
+const musicTrack = {
+  src: "/audio/A%20Business%20Day.mp3",
+  title: "A Business Day",
+} as MusicTrack | null;
+
 const tagline =
   "Freelance web & app developer. Dari landing page sampai sistem monitoring.";
 
@@ -76,6 +84,7 @@ export const id = {
     menuClose: "Tutup",
     links: [
       { href: "#tentang", label: "Tentang" },
+      { href: "#pengalaman", label: "Pengalaman" },
       { href: "#skill", label: "Skill" },
       { href: "#sertifikat", label: "Sertifikat" },
       { href: "#mulai", label: "Mulai" },
@@ -95,7 +104,7 @@ export const id = {
       // Perintah pertama (tampil awal). Satu elemen = satu baris di terminal.
       story: [
         "Halo, aku Nyu.",
-        "Developer di Yogyakarta dengan latar belakang Informatika, membuat website dan aplikasi secara freelance sejak Oktober 2025.",
+        "Developer di Yogyakarta dengan latar belakang Informatika, membuat website dan aplikasi secara freelance sejak 2025.",
         "Dari landing page, sistem monitoring berbasis web, sampai aplikasi Android yang tetap jalan tanpa internet.",
         "Punya ide atau masalah yang ingin dibantu? Ceritakan dulu lewat email, nanti kita cari bentuk yang paling pas.",
       ],
@@ -158,7 +167,7 @@ export const id = {
   about: {
     title: "Tentang",
     paragraphs: [
-      "Aku Nyu, developer di Yogyakarta berlatar belakang Informatika dari Universitas Sanata Dharma. Sejak Oktober 2025 aku mengerjakan proyek website dan aplikasi secara freelance, dari halaman profil sampai sistem monitoring berbasis web dengan PHP dan MySQL. Aku juga pernah membuat aplikasi Android yang berjalan sepenuhnya tanpa internet untuk pendataan komunitas di daerah dengan sinyal terbatas, jadi aku terbiasa merancang solusi yang menyesuaikan kondisi pemakainya. Di sela itu aku mengajar dasar Python untuk anak SMP, jadi aku terbiasa menjelaskan hal teknis dengan bahasa sederhana. Aku juga tertarik pada keamanan aplikasi dan kecerdasan buatan. Di luar layar, aku suka basket dan gym, sesekali main game, dan senang memotret.",
+      "Aku Nyu, developer di Yogyakarta berlatar belakang Informatika dari Universitas Sanata Dharma. Sejak 2025 aku mengerjakan proyek website dan aplikasi secara freelance, dari halaman profil sampai sistem monitoring berbasis web dengan PHP dan MySQL. Aku juga pernah membuat aplikasi Android yang berjalan sepenuhnya tanpa internet untuk pendataan komunitas di daerah dengan sinyal terbatas, jadi aku terbiasa merancang solusi yang menyesuaikan kondisi pemakainya. Di sela itu aku mengajar dasar Python untuk anak SMP, jadi aku terbiasa menjelaskan hal teknis dengan bahasa sederhana. Aku juga tertarik pada keamanan aplikasi dan kecerdasan buatan. Di luar layar, aku suka basket dan gym, sesekali main game, dan senang memotret.",
       "Kalau kamu punya kebutuhan website atau aplikasi, ceritakan masalahnya dulu lewat email. Kita bahas bersama bentuk yang paling masuk akal sebelum mulai membangun.",
     ],
     // Foto ada di public/nyu.webp (900x1125, rasio 4:5).
@@ -172,7 +181,68 @@ export const id = {
     facts: [
       { label: "Lokasi", value: "Yogyakarta" },
       { label: "Pendidikan", value: "Informatika, Universitas Sanata Dharma" },
-      { label: "Freelance", value: "sejak Oktober 2025" },
+      { label: "Freelance", value: "sejak 2025" },
+    ],
+  },
+  // Urut dari terlama. `period` opsional (tanpa period = tidak ada label waktu di kartu).
+  // Gambar ada di public/experience/ (file mentah disimpan di luar proyek).
+  experience: {
+    title: "Pengalaman",
+    lead: "Pengalaman yang membentuk caraku membangun web dan aplikasi.",
+    openLabel: "Perbesar",
+    closeLabel: "Close",
+    items: [
+      {
+        title: "Klien pertama: desain UI/UX sistem monitoring",
+        description:
+          "Proyek klien pertamaku. Aku mendesain UI/UX sebuah sistem monitoring di Figma, mulai dari tampilan pengguna sampai sisi admin.",
+        tags: [{ name: "Figma" }, { name: "UI/UX" }],
+        images: [
+          {
+            src: "/experience/sistem-monitoring-ui-ux.webp",
+            width: 1160,
+            height: 395,
+            alt: "Rancangan UI/UX sistem monitoring di Figma",
+          },
+        ],
+      },
+      {
+        title: "Juara I Web Development, IT Days 2026",
+        description: "Meraih Juara I kategori Web Development di IT Days 2026.",
+        tags: [{ name: "Web Development" }],
+        images: [
+          {
+            src: "/experience/it-days-2026.webp",
+            width: 1600,
+            height: 900,
+            alt: "Tiga orang memegang papan Juara I Web Development IT Days 2026",
+          },
+        ],
+      },
+      {
+        title: "KKN: aplikasi Android offline dan paper seminar",
+        description:
+          "Program kerja KKN-ku adalah membuat aplikasi Android offline untuk pendataan umat di daerah dengan internet terbatas. Di tahap akhir KKN, aku menulis paper tentang pemanfaatan Claude sebagai asisten koding dalam membangun aplikasi seperti ini, lalu membawanya ke Seminar Nasional USDB 2026.",
+        tags: [
+          { name: "Kotlin", icon: "kotlin" },
+          { name: "Android Studio" },
+          { name: "Claude", icon: "claude" },
+        ],
+        images: [
+          {
+            src: "/experience/android-data-umat.webp",
+            width: 1200,
+            height: 970,
+            alt: "Kode layout aplikasi Android Data Umat di Android Studio beserta pratinjau tampilannya",
+          },
+          {
+            src: "/experience/seminar-usdb-2026.webp",
+            width: 848,
+            height: 476,
+            alt: "Slide seminar: latar belakang dan konteks penelitian pemanfaatan Claude AI dalam pengembangan aplikasi Android offline",
+          },
+        ],
+      },
     ],
   },
   skills: {
@@ -310,6 +380,11 @@ export const id = {
         href: instagramUrl,
       },
     ] as const,
+  },
+  music: {
+    label: "Musik latar",
+    error: "Gagal memutar",
+    track: musicTrack,
   },
   footer: {
     brand: "NYU//DEV",

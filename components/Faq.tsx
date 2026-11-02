@@ -6,7 +6,7 @@ export function Faq() {
   const { faq } = content;
 
   return (
-    <Section id="faq" index="05" title={faq.title}>
+    <Section id="faq" index="06" title={faq.title}>
       <FaqAccordion items={faq.items} />
     </Section>
   );

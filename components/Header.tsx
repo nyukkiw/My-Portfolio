@@ -18,8 +18,8 @@ export function Header() {
           </span>
         </a>
 
-        {/* Layar >= 640px: tautan berjajar */}
-        <nav aria-label={nav.label} className="hidden sm:block">
+        {/* Layar >= 768px: tautan berjajar */}
+        <nav aria-label={nav.label} className="hidden md:block">
           <ul className="flex items-center gap-1">
             {nav.links.map((link) => (
               <li key={link.href}>
@@ -34,7 +34,7 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Layar < 640px: tombol Menu */}
+        {/* Layar < 768px: tombol Menu */}
         <MobileNav
           label={nav.label}
           openLabel={nav.menuOpen}
