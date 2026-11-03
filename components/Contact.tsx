@@ -1,4 +1,4 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { CopyEmail } from "./CopyEmail";
 import { CodeIcon, InstagramIcon } from "./icons";
 import { RevealGroup, RevealItem } from "./Reveal";
@@ -9,8 +9,8 @@ const icons = {
   instagram: InstagramIcon,
 };
 
-export function Contact() {
-  const { contact } = content;
+export async function Contact() {
+  const { contact } = await getContent();
 
   return (
     <Section id="kontak" index="07" title={contact.title}>

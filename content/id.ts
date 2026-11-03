@@ -1,5 +1,14 @@
-// Teks situs (Bahasa Indonesia). Untuk menambah bahasa lain nanti: salin file ini
-// (mis. en.ts), terjemahkan, lalu pilih di content/index.ts.
+// Teks situs (Bahasa Indonesia). Terjemahan Inggris ada di en.ts dan dipaksa berbentuk sama
+// (tipe `Content`), jadi tambah kunci baru di sini = TypeScript meminta kunci itu juga di en.ts.
+// Pemilihan bahasa ada di content/index.ts. Data yang sama di semua bahasa ada di shared.ts.
+import {
+  emailDomain,
+  emailUser,
+  githubUrl,
+  instagramUrl,
+  musicTrack,
+} from "./shared";
+
 // icon = kunci di components/techIcons.ts (opsional; tanpa icon = teks saja).
 type SkillItem = { name: string; icon?: string };
 
@@ -51,20 +60,6 @@ const skillGroups: SkillGroup[] = [
   },
 ];
 
-// Alamat email dipecah agar tidak muncul utuh di HTML (lebih sulit dipanen bot).
-const emailUser = "valentinobanyu0";
-const emailDomain = "gmail.com";
-const githubUrl = "https://github.com/nyukkiw";
-const instagramUrl = "https://www.instagram.com/appbuilder.nyu/";
-
-// Musik latar (satu lagu). File ada di public/audio/. Set ke `null` untuk menyembunyikan pemutar.
-// Tambahkan `artist` kalau lisensinya mewajibkan atribusi. Pastikan hak pakai di situs publik.
-type MusicTrack = { src: string; title: string; artist?: string };
-const musicTrack = {
-  src: "/audio/A%20Business%20Day.mp3",
-  title: "A Business Day",
-} as MusicTrack | null;
-
 const tagline =
   "Freelance web & app developer. Dari landing page sampai sistem monitoring.";
 
@@ -77,11 +72,23 @@ export const id = {
     wordmark: "nyu",
     title: "Nyu | Freelance Web & App Developer",
     description: tagline,
+    ogImage: "/og.png",
+  },
+  // Pemilih bahasa di header. Alamat: Indonesia di "/", Inggris di "/en".
+  language: {
+    label: "Pilih bahasa",
+    options: [
+      { code: "id", short: "ID", name: "Bahasa Indonesia", href: "/" },
+      { code: "en", short: "EN", name: "English", href: "/en" },
+    ],
   },
   nav: {
     label: "Navigasi utama",
+    homeLabel: "Nyu, ke beranda",
     menuOpen: "Menu",
     menuClose: "Tutup",
+    themeToLight: "Ganti ke mode terang",
+    themeToDark: "Ganti ke mode gelap",
     links: [
       { href: "#tentang", label: "Tentang" },
       { href: "#pengalaman", label: "Pengalaman" },
@@ -193,10 +200,13 @@ export const id = {
     closeLabel: "Close",
     items: [
       {
-        title: "Klien pertama: desain UI/UX sistem monitoring",
+        title: "Klien pertama: sistem monitoring dari awal sampai akhir",
         description:
-          "Proyek klien pertamaku. Aku mendesain UI/UX sebuah sistem monitoring di Figma, mulai dari tampilan pengguna sampai sisi admin.",
-        tags: [{ name: "Figma" }, { name: "UI/UX" }],
+          "Proyek klien pertamaku. Aku mengerjakan sebuah sistem monitoring secara end-to-end, dari awal sampai akhir.",
+        tags: [
+          { name: "PHP", icon: "php" },
+          { name: "MySQL", icon: "mysql" },
+        ],
         images: [
           {
             src: "/experience/sistem-monitoring-ui-ux.webp",
@@ -395,3 +405,6 @@ export const id = {
     ],
   },
 };
+
+// Bentuk teks yang wajib sama di semua bahasa.
+export type Content = typeof id;

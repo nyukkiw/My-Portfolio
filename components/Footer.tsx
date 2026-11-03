@@ -1,11 +1,11 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 
 function Separator() {
   return <span aria-hidden="true">&middot;</span>;
 }
 
-export function Footer() {
-  const { footer } = content;
+export async function Footer() {
+  const { footer } = await getContent();
 
   return (
     <footer className="border-t border-border py-8">

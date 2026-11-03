@@ -33,6 +33,30 @@
   color-scheme: dark;
   /* Padding vertikal section: 64 / 96 / 128 px */
   --space-section: 4rem;
+  /* Glow aksen (satu tempat saja); dimatikan di mode terang */
+  --glow: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+/*
+ * Mode terang (mode gelap = nilai di @theme di atas). Diatur lewat atribut data-theme pada <html>
+ * (lihat skrip di app/layout.tsx dan components/ThemeToggle.tsx). Aksen terang memakai cyan lebih
+ * gelap karena #22d3ee hanya 1,8:1 di latar putih. Kontras (WCAG) tercatat di design-system MASTER.md.
+ */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-background: #f5f8fd;
+  --color-card: #ffffff;
+  --color-muted: #e8eef8;
+  --color-foreground: #0a1224;
+  --color-muted-foreground: #4a5d7e;
+  --color-accent: #0e7490;
+  --color-accent-hover: #155e75;
+  --color-on-accent: #ffffff;
+  --color-border: #cbd7ea;
+  --color-border-control: #5c779f;
+  --color-destructive: #b91c1c;
+  --color-ring: #0e7490;
+  --glow: transparent;
 }
 
 @media (min-width: 768px) {
@@ -127,11 +151,7 @@ body {
 
 /* Glow: dipakai di SATU tempat saja (judul hero atau tombol primer) */
 .glow {
-  text-shadow: 0 0 12px rgb(34 211 238 / 0.35);
-}
-
-.glow-box {
-  box-shadow: 0 0 12px rgb(34 211 238 / 0.35);
+  text-shadow: 0 0 12px var(--glow);
 }
 
 /* Equalizer mini pemutar musik: hanya transform (scaleY), bergerak saat lagu diputar */

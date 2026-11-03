@@ -56,6 +56,27 @@ Aturan: tanpa hijau. Navy (`#0A1224`, `#0F1B33`, `#15244A`, dan navy `#0B1B3A`) 
 | Control border / muted surface | 3.85 | 3.0 OK |
 | Decorative border / background | 1.86 | dekoratif, tidak disyaratkan |
 
+### Mode terang (ditambahkan; mode gelap di atas tetap bawaan situs)
+
+Tema mengikuti pengaturan perangkat; tombol matahari/bulan di header mengganti dan pilihannya diingat (localStorage).
+Diatur lewat atribut `data-theme` pada `<html>` (`:root[data-theme="light"]` di `app/globals.css`). Cyan `#22D3EE` hanya 1,81:1
+di latar putih, jadi aksen terang memakai cyan lebih gelap (satu keluarga warna). Glow dimatikan di mode terang.
+
+| Role | Hex | Kontras (WCAG) |
+|------|-----|----------------|
+| Background | `#F5F8FD` | |
+| Card | `#FFFFFF` | |
+| Muted surface | `#E8EEF8` | |
+| Foreground | `#0A1224` | 17,54 / 18,67 (latar / kartu) |
+| Muted foreground | `#4A5D7E` | 6,25 / 6,65 / 5,70 (latar / kartu / muted) |
+| Accent | `#0E7490` | teks 5,03 / 5,36 / 4,60 (latar / kartu / muted) |
+| Accent hover | `#155E75` | 6,83 di latar |
+| On accent | `#FFFFFF` | 5,36 di accent; 7,27 di hover |
+| Border (decorative) | `#CBD7EA` | 1,37 (dekoratif saja) |
+| Border (control) | `#5C779F` | 4,29 / 4,57 / 3,92 (>= 3 OK) |
+| Destructive | `#B91C1C` | 6,47 di kartu |
+| Ring | `#0E7490` | |
+
 ### Typography (tanpa font baru: Geist yang sudah dimuat di `app/layout.tsx`)
 
 - **Mono (`--font-geist-mono`):** label, nav, judul kecil, tombol (huruf kapital, `letter-spacing: 0.08em`), metadata.

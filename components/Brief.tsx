@@ -1,9 +1,9 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { BriefBuilder } from "./BriefBuilder";
 import { Section } from "./Section";
 
-export function Brief() {
-  const { brief } = content;
+export async function Brief() {
+  const { brief } = await getContent();
 
   return (
     <Section id="mulai" index="05" title={brief.title}>

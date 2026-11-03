@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { Reveal } from "./Reveal";
 import { Section } from "./Section";
 
-export function About() {
-  const { about } = content;
+export async function About() {
+  const { about } = await getContent();
 
   return (
     <Section id="tentang" index="01" title={about.title}>

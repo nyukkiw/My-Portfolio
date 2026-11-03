@@ -1,10 +1,10 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { RevealGroup, RevealItem } from "./Reveal";
 import { Section } from "./Section";
 import { TechIcon } from "./TechIcon";
 
-export function Skills() {
-  const { skills } = content;
+export async function Skills() {
+  const { skills } = await getContent();
 
   return (
     <Section id="skill" index="03" title={skills.title}>

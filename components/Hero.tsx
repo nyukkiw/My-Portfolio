@@ -1,10 +1,10 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { Button } from "./Button";
 import { HeroTerminal, type TerminalCommand } from "./HeroTerminal";
 import { Reveal } from "./Reveal";
 
-export function Hero() {
-  const { hero, skills, certificates, contact } = content;
+export async function Hero() {
+  const { hero, skills, certificates, contact } = await getContent();
   const t = hero.terminal;
 
   // Semua isi terminal berasal dari data situs yang sudah ada.

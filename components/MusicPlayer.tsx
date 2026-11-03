@@ -55,7 +55,7 @@ export function MusicPlayer({ track, label, error }: Props) {
         onClick={toggle}
         aria-pressed={playing}
         aria-label={`${label}: ${track.title}`}
-        className={`flex min-h-11 max-w-[calc(100vw-2rem)] cursor-pointer items-center gap-3 border bg-background/95 px-4 py-2 font-mono text-xs transition-colors duration-200 hover:border-accent ${
+        className={`flex min-h-11 max-w-[calc(100vw-9.5rem)] cursor-pointer sm:max-w-[calc(100vw-2rem)] items-center gap-3 border bg-background/95 px-4 py-2 font-mono text-xs transition-colors duration-200 hover:border-accent ${
           playing ? "eq-playing border-accent" : "border-border-control"
         }`}
       >

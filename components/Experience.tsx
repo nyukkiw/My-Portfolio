@@ -1,9 +1,9 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { ExperienceTimeline } from "./ExperienceTimeline";
 import { Section } from "./Section";
 
-export function Experience() {
-  const { experience } = content;
+export async function Experience() {
+  const { experience } = await getContent();
 
   return (
     <Section id="pengalaman" index="02" title={experience.title}>

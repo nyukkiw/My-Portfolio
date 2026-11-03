@@ -1,9 +1,9 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { CertificateGallery } from "./CertificateGallery";
 import { Section } from "./Section";
 
-export function Certificates() {
-  const { certificates } = content;
+export async function Certificates() {
+  const { certificates } = await getContent();
 
   return (
     <Section id="sertifikat" index="04" title={certificates.title}>

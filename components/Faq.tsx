@@ -1,9 +1,9 @@
-import { content } from "@/content";
+import { getContent } from "@/content";
 import { FaqAccordion } from "./FaqAccordion";
 import { Section } from "./Section";
 
-export function Faq() {
-  const { faq } = content;
+export async function Faq() {
+  const { faq } = await getContent();
 
   return (
     <Section id="faq" index="06" title={faq.title}>
