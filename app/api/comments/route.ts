@@ -1,7 +1,7 @@
 import { connection } from "next/server";
 import type { NextRequest } from "next/server";
 import { MESSAGE_MAX, NAME_MAX, type PublicComment } from "@/lib/comments";
-import { getSql } from "@/lib/db";
+import { getSql, withRetry } from "@/lib/db";
 
 const MAX_BODY = 4096;
 const MAX_PER_IP = 3; // per 10 menit
@@ -11,6 +11,13 @@ const MAX_TOTAL = 20; // semua pengirim, per 10 menit
 // teks (bidi, dipakai untuk memalsukan tampilan), dan BOM.
 const HIDDEN =
   /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F​-‏‪-‮⁠-⁤⁦-⁩﻿]/g;
+
+// Untuk log server: nama, kode, dan pesan error (tanpa isi query).
+function describe(error: unknown) {
+  if (!(error instanceof Error)) return "unknown";
+  const code = (error as { code?: string }).code;
+  return `${error.name}${code ? ` ${code}` : ""}: ${error.message}`;
+}
 
 function fail(status: number, error: "invalid" | "rate" | "server") {
   return Response.json({ ok: false, error }, { status });
@@ -39,12 +46,14 @@ export async function GET() {
   await connection();
   const headers = { "Cache-Control": "no-store" };
   try {
-    const rows = await getSql()`
-      select id, name, message, created_at
-      from comments
-      where approved = true
-      order by created_at desc
-      limit 50`;
+    const rows = await withRetry(
+      (sql) => sql`
+        select id, name, message, created_at
+        from comments
+        where approved = true
+        order by created_at desc
+        limit 50`,
+    );
     const items: PublicComment[] = rows.map((row) => ({
       id: String(row.id),
       name: String(row.name),
@@ -53,10 +62,7 @@ export async function GET() {
     }));
     return Response.json({ ok: true, items }, { headers });
   } catch (error) {
-    console.error(
-      "comments GET gagal:",
-      error instanceof Error ? error.message : "unknown",
-    );
+    console.error("comments GET gagal:", describe(error));
     return Response.json({ ok: false, error: "server" }, { status: 500, headers });
   }
 }
@@ -118,17 +124,19 @@ export async function POST(request: NextRequest) {
     const ip = forwarded || request.headers.get("x-real-ip") || "";
     const ipHash = ip ? await hashIp(ip, salt) : null;
 
-    const sql = getSql();
-    const [counts] = await sql`
-      select
-        count(*) filter (where ip_hash = ${ipHash}) as ip_count,
-        count(*) filter (
-          where ip_hash = ${ipHash} and created_at > now() - interval '30 seconds'
-        ) as recent_count,
-        count(*) filter (where message = ${message}) as dup_count,
-        count(*) as total_count
-      from comments
-      where created_at > now() - interval '10 minutes'`;
+    // Query hitung ini juga membangunkan database yang "tidur", jadi dibungkus retry.
+    const [counts] = await withRetry(
+      (sql) => sql`
+        select
+          count(*) filter (where ip_hash = ${ipHash}) as ip_count,
+          count(*) filter (
+            where ip_hash = ${ipHash} and created_at > now() - interval '30 seconds'
+          ) as recent_count,
+          count(*) filter (where message = ${message}) as dup_count,
+          count(*) as total_count
+        from comments
+        where created_at > now() - interval '10 minutes'`,
+    );
 
     if (
       Number(counts.ip_count) >= MAX_PER_IP || // terlalu banyak dari satu pengirim
@@ -139,16 +147,14 @@ export async function POST(request: NextRequest) {
       return fail(429, "rate");
     }
 
-    await sql`
+    // Insert tidak diulang otomatis, agar komentar tidak tersimpan ganda.
+    await getSql()`
       insert into comments (name, message, lang, approved, ip_hash)
       values (${name}, ${message}, ${lang}, true, ${ipHash})`;
 
     return Response.json({ ok: true });
   } catch (error) {
-    console.error(
-      "comments POST gagal:",
-      error instanceof Error ? error.message : "unknown",
-    );
+    console.error("comments POST gagal:", describe(error));
     return fail(500, "server");
   }
 }
