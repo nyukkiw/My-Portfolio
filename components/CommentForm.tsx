@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Content } from "@/content/id";
 import { MESSAGE_MAX, NAME_MAX } from "@/lib/comments";
@@ -15,11 +14,12 @@ const fieldClass =
 export function CommentForm({
   lang,
   form,
+  onSent,
 }: {
   lang: string;
   form: Content["comments"]["form"];
+  onSent: () => void | Promise<void>;
 }) {
-  const router = useRouter();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [trap, setTrap] = useState(""); // honeypot: manusia tidak melihatnya
@@ -45,7 +45,7 @@ export function CommentForm({
         setStatus("sent");
         // Pesan sukses hilang sendiri setelah 3 detik.
         timer.current = setTimeout(() => setStatus("idle"), 3000);
-        router.refresh(); // muat ulang daftar komentar agar komentar baru langsung terlihat
+        void onSent(); // muat ulang daftar komentar agar komentar baru langsung terlihat
         return;
       }
       const data: { error?: string } = await res.json().catch(() => ({}));

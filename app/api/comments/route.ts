@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import type { NextRequest } from "next/server";
-import { MESSAGE_MAX, NAME_MAX } from "@/lib/comments";
+import { MESSAGE_MAX, NAME_MAX, type PublicComment } from "@/lib/comments";
 import { getSql } from "@/lib/db";
 
 const MAX_BODY = 4096;
@@ -31,6 +31,34 @@ async function hashIp(ip: string, salt: string) {
   return Array.from(new Uint8Array(digest), (b) =>
     b.toString(16).padStart(2, "0"),
   ).join("");
+}
+
+// Daftar komentar diambil dari browser (bukan dari server saat render halaman),
+// agar halaman tetap statis penuh. Hosting tidak melanjutkan bagian dinamis halaman.
+export async function GET() {
+  await connection();
+  const headers = { "Cache-Control": "no-store" };
+  try {
+    const rows = await getSql()`
+      select id, name, message, created_at
+      from comments
+      where approved = true
+      order by created_at desc
+      limit 50`;
+    const items: PublicComment[] = rows.map((row) => ({
+      id: String(row.id),
+      name: String(row.name),
+      message: String(row.message),
+      createdAt: new Date(row.created_at).toISOString(),
+    }));
+    return Response.json({ ok: true, items }, { headers });
+  } catch (error) {
+    console.error(
+      "comments GET gagal:",
+      error instanceof Error ? error.message : "unknown",
+    );
+    return Response.json({ ok: false, error: "server" }, { status: 500, headers });
+  }
 }
 
 export async function POST(request: NextRequest) {
