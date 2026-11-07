@@ -87,26 +87,35 @@ export function CommentBoard({
         ) : board.items.length === 0 ? (
           <p className={noteClass}>{comments.list.empty}</p>
         ) : (
-          <ul className="mt-4 border-t border-border">
-            {board.items.map((item) => (
-              <li key={item.id} className="border-b border-border py-4">
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="break-words font-semibold">
-                    {item.name || comments.list.anonymous}
-                  </span>
-                  <time
-                    dateTime={item.createdAt}
-                    className="shrink-0 font-mono text-xs text-muted-foreground"
-                  >
-                    {date.format(new Date(item.createdAt))}
-                  </time>
-                </div>
-                <p className="mt-1 whitespace-pre-line break-words text-muted-foreground">
-                  {item.message}
-                </p>
-              </li>
-            ))}
-          </ul>
+          // Kotak scroll: tinggi dibatasi agar halaman tidak memanjang saat komentar banyak.
+          // tabIndex agar bisa di-scroll dengan keyboard; indikator fokus dari gaya global.
+          <div
+            role="region"
+            aria-label={comments.list.label}
+            tabIndex={0}
+            className="mt-4 max-h-[32rem] overflow-y-auto border-t border-border pr-2 [scrollbar-color:var(--color-border-control)_transparent] [scrollbar-width:thin]"
+          >
+            <ul>
+              {board.items.map((item) => (
+                <li key={item.id} className="border-b border-border py-4">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="break-words font-semibold">
+                      {item.name || comments.list.anonymous}
+                    </span>
+                    <time
+                      dateTime={item.createdAt}
+                      className="shrink-0 font-mono text-xs text-muted-foreground"
+                    >
+                      {date.format(new Date(item.createdAt))}
+                    </time>
+                  </div>
+                  <p className="mt-1 whitespace-pre-line break-words text-muted-foreground">
+                    {item.message}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>
