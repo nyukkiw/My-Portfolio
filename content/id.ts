@@ -6,6 +6,7 @@ import {
   emailUser,
   githubUrl,
   instagramUrl,
+  linkedinUrl,
   musicTrack,
 } from "./shared";
 
@@ -369,6 +370,35 @@ export const id = {
       },
     ],
   },
+  comments: {
+    title: "Komentar",
+    intro:
+      "Tinggalkan kesan atau sapaan.",
+    privacy:
+      "Hanya nama dan pesan yang disimpan.",
+    form: {
+      nameLabel: "Nama (boleh kosong)",
+      namePlaceholder: "Anonim",
+      messageLabel: "Pesan",
+      messagePlaceholder: "Tulis komentarmu di sini",
+      remaining: "karakter tersisa",
+      submit: "Kirim",
+      sending: "Mengirim",
+      success: "Terkirim. Komentarmu sudah tampil.",
+      errors: {
+        invalid: "Pesan kosong atau terlalu panjang.",
+        rate: "Terlalu cepat atau terlalu banyak kiriman. Coba lagi sebentar lagi.",
+        server: "Gagal mengirim. Coba lagi nanti.",
+      },
+    },
+    list: {
+      label: "Komentar",
+      loading: "Memuat komentar",
+      empty: "Belum ada komentar. Jadilah yang pertama.",
+      error: "Komentar belum bisa dimuat.",
+      anonymous: "Anonim",
+    },
+  },
   contact: {
     title: "Kontak",
     lead: "Punya ide website, aplikasi, atau sistem monitoring? Ceritakan kebutuhanmu lewat email atau media sosial di bawah ini.",
@@ -388,6 +418,12 @@ export const id = {
         label: "Instagram",
         value: "@appbuilder.nyu",
         href: instagramUrl,
+      },
+      {
+        icon: "linkedin",
+        label: "LinkedIn",
+        value: "Nyu",
+        href: linkedinUrl,
       },
     ] as const,
   },

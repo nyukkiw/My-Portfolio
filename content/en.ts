@@ -6,6 +6,7 @@ import {
   emailUser,
   githubUrl,
   instagramUrl,
+  linkedinUrl,
   musicTrack,
 } from "./shared";
 
@@ -351,6 +352,34 @@ export const en: Content = {
       },
     ],
   },
+  comments: {
+    title: "Comments",
+    intro:
+      "Leave a note or say hi. Comments appear right away; I remove inappropriate ones.",
+    privacy: "Only your name and message are stored. No email or other data.",
+    form: {
+      nameLabel: "Name (optional)",
+      namePlaceholder: "Anonymous",
+      messageLabel: "Message",
+      messagePlaceholder: "Write your comment here",
+      remaining: "characters left",
+      submit: "Send",
+      sending: "Sending",
+      success: "Sent. Your comment is now visible.",
+      errors: {
+        invalid: "Empty or too long message.",
+        rate: "Too fast or too many submissions. Please try again shortly.",
+        server: "Could not send. Please try again later.",
+      },
+    },
+    list: {
+      label: "Comments",
+      loading: "Loading comments",
+      empty: "No comments yet. Be the first.",
+      error: "Comments could not be loaded.",
+      anonymous: "Anonymous",
+    },
+  },
   contact: {
     title: "Contact",
     lead: "Have an idea for a website, app, or monitoring system? Tell me what you need by email or on social media below.",
@@ -370,6 +399,12 @@ export const en: Content = {
         label: "Instagram",
         value: "@appbuilder.nyu",
         href: instagramUrl,
+      },
+      {
+        icon: "linkedin",
+        label: "LinkedIn",
+        value: "Nyu",
+        href: linkedinUrl,
       },
     ] as const,
   },

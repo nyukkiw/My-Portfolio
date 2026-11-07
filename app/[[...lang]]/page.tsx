@@ -1,6 +1,7 @@
 import { About } from "@/components/About";
 import { Brief } from "@/components/Brief";
 import { Certificates } from "@/components/Certificates";
+import { Comments } from "@/components/Comments";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
 import { Faq } from "@/components/Faq";
@@ -26,6 +27,7 @@ export default async function Home() {
         <Certificates />
         <Brief />
         <Faq />
+        <Comments />
         <Contact />
       </main>
       <Footer />

@@ -1,19 +1,20 @@
 import { getContent } from "@/content";
 import { CopyEmail } from "./CopyEmail";
-import { CodeIcon, InstagramIcon } from "./icons";
+import { CodeIcon, InstagramIcon, LinkedinIcon } from "./icons";
 import { RevealGroup, RevealItem } from "./Reveal";
 import { Section } from "./Section";
 
 const icons = {
   github: CodeIcon,
   instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
 };
 
 export async function Contact() {
   const { contact } = await getContent();
 
   return (
-    <Section id="kontak" index="07" title={contact.title}>
+    <Section id="kontak" index="08" title={contact.title}>
       <p className="max-w-[52ch] text-lg text-muted-foreground">
         {contact.lead}
       </p>

@@ -21,3 +21,4 @@ export async function getContent(): Promise<Content> {
   const locale = await getLocale();
   return locale === "id" ? id : dictionaries[locale];
 }
+

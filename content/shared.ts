@@ -5,6 +5,7 @@ export const emailUser = "valentinobanyu0";
 export const emailDomain = "gmail.com";
 export const githubUrl = "https://github.com/nyukkiw";
 export const instagramUrl = "https://www.instagram.com/appbuilder.nyu/";
+export const linkedinUrl = "https://www.linkedin.com/in/valentino-banyu-756752311/";
 
 // Musik latar (satu lagu). File ada di public/audio/. Set ke `null` untuk menyembunyikan pemutar.
 // Tambahkan `artist` kalau lisensinya mewajibkan atribusi. Pastikan hak pakai di situs publik.

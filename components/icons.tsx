@@ -128,6 +128,15 @@ export function InstagramIcon({ className }: IconProps) {
   );
 }
 
+export function LinkedinIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M4 4h16v16H4z" />
+      <path d="M8 9.5h.01M8 12v5M12 17v-5M12 14.5c0-1.4.9-2.5 2.25-2.5 1.35 0 2.25 1 2.25 2.5V17" />
+    </Svg>
+  );
+}
+
 export function ChatIcon({ className }: IconProps) {
   return (
     <Svg className={className}>
